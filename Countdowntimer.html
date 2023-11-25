@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<style>
+			body {
+				text-align: center;
+				background-image: url('https://www.followmeaway.com/wp-content/uploads/2020/08/christmas-in-new-york-winter-scene-1.jpg');
+				font-family: cursive;
+				font-weight: bold;
+                text-decoration: underline;
+				background-size:100% 350%;
+			}
+		
+			h1 {
+				color: goldenrod;
+				font-weight: 100;
+				font-size: 40px;
+				margin: 40px 0px 20px;
+			}
+			#clockdiv {
+				font-family: sans-serif;
+				color: #fff;
+				display: inline-block;
+				font-weight: 100;
+				text-align: center;
+				font-size: 30px;
+			}
+			#clockdiv > div {
+				padding: 10px;
+				border-radius: 3px;
+				background: #bf6900;
+				display: inline-block;
+			}
+			#clockdiv div > span {
+				padding: 15px;
+				border-radius: 3px;
+				background: #812f00;
+				display: inline-block;
+			}
+			.smalltext {
+				padding-top: 5px;
+				font-size: 16px;
+			}
+		</style>
+	</head>
+	<body>
+		<h1>Countdown Clock For CHRISTMAS</h1>
+		<div id="clockdiv">
+			<div>
+				<span class="days" id="day"></span>
+				<div class="smalltext">Days</div>
+			</div>
+			<div>
+				<span class="hours" id="hour"></span>
+				<div class="smalltext">Hours</div>
+			</div>
+			<div>
+				<span class="minutes" id="minute"></span>
+				<div class="smalltext">Minutes</div>
+			</div>
+			<div>
+				<span class="seconds" id="second"></span>
+				<div class="smalltext">Seconds</div>
+			</div>
+		</div>
+		<p id="demo"></p>
+		<script>
+			let deadline = new Date(
+				"dec 25, 2023 15:37:25"
+			).getTime();
+			let x = setInterval(function () {
+				let now = new Date().getTime();
+				let t = deadline - now;
+				let days = Math.floor(
+					t / (1000 * 60 * 60 * 24)
+				);
+				let hours = Math.floor(
+					(t % (1000 * 60 * 60 * 24)) /
+						(1000 * 60 * 60)
+				);
+				let minutes = Math.floor(
+					(t % (1000 * 60 * 60)) / (1000 * 60)
+				);
+				let seconds = Math.floor(
+					(t % (1000 * 60)) / 1000
+				);
+				document.getElementById("day")
+						.innerHTML = days;
+				document.getElementById("hour")
+						.innerHTML = hours;
+				document.getElementById("minute")
+						.innerHTML = minutes;
+				document.getElementById("second")
+						.innerHTML = seconds;
+				if (t < 0) {
+					clearInterval(x);
+					document.getElementById(
+						"demo"
+					).innerHTML = "TIME UP";
+					document.getElementById(
+						"day"
+					).innerHTML = "0";
+					document.getElementById(
+						"hour"
+					).innerHTML = "0";
+					document.getElementById(
+						"minute"
+					).innerHTML = "0";
+					document.getElementById(
+						"second"
+					).innerHTML = "0";
+				}
+			}, 1000);
+		</script>
+	</body>
+</html>
